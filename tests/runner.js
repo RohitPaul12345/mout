@@ -5,10 +5,10 @@
 (function(requirejs, jasmine){
 
 
-var env = jasmine.getEnv();
-var reporter;
+let env = jasmine.getEnv();
+let reporter;
 
-var opts = {};
+let opts = {};
 opts.paths = {
     'mout' : '../src'
 };
@@ -50,7 +50,7 @@ if (typeof document !== 'undefined') { // browser ---
 
     // jasmine-node doesn't expose the TerminalReporter :(
     // see: https://github.com/mhevery/jasmine-node/issues/184
-    var TerminalReporter = require('jasmine-node/lib/jasmine-node/reporter').jasmineNode.TerminalReporter;
+    let TerminalReporter = require('jasmine-node/lib/jasmine-node/reporter').jasmineNode.TerminalReporter;
     reporter = new TerminalReporter({
         color: true,
         onComplete : function(reporter) {
