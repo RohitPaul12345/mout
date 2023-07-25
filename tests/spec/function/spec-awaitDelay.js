@@ -12,11 +12,11 @@ define(['mout/function/awaitDelay', '../time/helper-mockNow'], function(awaitDel
         });
 
         it('should wait for delay', function() {
-            var count = 0;
-            var fn = function() {
+            let count = 0;
+            let fn = function() {
                 count++;
             };
-            var callback = awaitDelay(fn, 100);
+            let callback = awaitDelay(fn, 100);
 
             callback();
             expect( count ).toBe(0);
@@ -26,11 +26,11 @@ define(['mout/function/awaitDelay', '../time/helper-mockNow'], function(awaitDel
         });
 
         it('should wait for callback and always be async', function() {
-            var count = 0;
-            var fn = function() {
+            let count = 0;
+            let fn = function() {
                 count++;
             };
-            var callback = awaitDelay(fn, 100);
+            let callback = awaitDelay(fn, 100);
 
             jasmine.Clock.tick(100);
             expect( count ).toBe(0);
@@ -44,11 +44,11 @@ define(['mout/function/awaitDelay', '../time/helper-mockNow'], function(awaitDel
         });
 
         it('should not be called before delay even if called multiple times', function() {
-            var count = 0;
-            var fn = function() {
+            let count = 0;
+            let fn = function() {
                 count++;
             };
-            var callback = awaitDelay(fn, 30);
+            let callback = awaitDelay(fn, 30);
 
             callback();
             callback();
@@ -59,11 +59,11 @@ define(['mout/function/awaitDelay', '../time/helper-mockNow'], function(awaitDel
         });
 
         it('should carry arguments', function() {
-            var count = 0;
-            var fn = function(a) {
+            let count = 0;
+            let fn = function(a) {
                 count = a;
             };
-            var callback = awaitDelay(fn, 100);
+            let callback = awaitDelay(fn, 100);
 
             jasmine.Clock.tick(100);
 
@@ -74,11 +74,11 @@ define(['mout/function/awaitDelay', '../time/helper-mockNow'], function(awaitDel
         });
 
         it('should carry arguments from premature call', function() {
-            var count = 0;
-            var fn = function(a) {
+            let count = 0;
+            let fn = function(a) {
                 count = a;
             };
-            var callback = awaitDelay(fn, 100);
+            let callback = awaitDelay(fn, 100);
 
             callback(2);
             expect( count ).toBe(0);
@@ -88,15 +88,15 @@ define(['mout/function/awaitDelay', '../time/helper-mockNow'], function(awaitDel
         });
 
         it('should allow changing the context', function () {
-            var val;
-            var ctx;
-            var foo = {bar:'baz'};
+            let val;
+            let ctx;
+            let foo = {bar:'baz'};
 
-            var fn = function(a) {
+            let fn = function(a) {
                 val = a;
                 ctx = this;
             };
-            var callback = awaitDelay(fn, 100);
+            let callback = awaitDelay(fn, 100);
 
             callback.call(foo, 2);
             expect( val ).toBeUndefined();
@@ -108,13 +108,13 @@ define(['mout/function/awaitDelay', '../time/helper-mockNow'], function(awaitDel
         });
 
         it('should allow using `clearTimeout` to cancel the delayed call', function () {
-            var count = 0;
-            var fn = function() {
+            let count = 0;
+            let fn = function() {
                 count++;
             };
-            var callback = awaitDelay(fn, 100);
+            let callback = awaitDelay(fn, 100);
 
-            var timeout = callback();
+            let timeout = callback();
             expect( count ).toBe(0);
             jasmine.Clock.tick(50);
             clearTimeout(timeout);
