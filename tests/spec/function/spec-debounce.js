@@ -12,8 +12,8 @@ define(['mout/function/debounce', '../time/helper-mockNow'], function(debounce, 
         });
 
         it('should execute callback only once after consecutive calls and just after interval', function(){
-            var count = 0;
-            var cb = debounce(function(){
+            let count = 0;
+            let cb = debounce(function(){
                 count++;
             }, 50);
             cb();
@@ -26,8 +26,8 @@ define(['mout/function/debounce', '../time/helper-mockNow'], function(debounce, 
 
 
         it('should allow passing args and should use last supplied value by default', function(){
-            var count = 0;
-            var cb = debounce(function(a, b){
+            let count = 0;
+            let cb = debounce(function(a, b){
                 count += a + b;
             }, 50);
             cb(1,2);
@@ -40,8 +40,8 @@ define(['mout/function/debounce', '../time/helper-mockNow'], function(debounce, 
 
 
         it('should allow executing callback at begin', function(){
-            var count = 0;
-            var cb = debounce(function(){
+            let count = 0;
+            let cb = debounce(function(){
                 count++;
             }, 50, true);
             cb();
@@ -57,8 +57,8 @@ define(['mout/function/debounce', '../time/helper-mockNow'], function(debounce, 
 
 
         it('should use first supplied args if it executes asap', function(){
-            var count = 0;
-            var cb = debounce(function(a, b){
+            let count = 0;
+            let cb = debounce(function(a, b){
                 count += a + b;
             }, 50, true);
             cb(1,2);
@@ -74,8 +74,8 @@ define(['mout/function/debounce', '../time/helper-mockNow'], function(debounce, 
 
 
         it('should allow to cancel the debounced call', function () {
-            var count = 0;
-            var cb = debounce(function(){
+            let count = 0;
+            let cb = debounce(function(){
                 count++;
             }, 50);
             cb();
