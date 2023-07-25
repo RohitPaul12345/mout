@@ -2,7 +2,7 @@ define(['mout/function/after'], function(after){
 
     describe('function/after', function(){
 
-        var count = 0;
+        let count = 0;
 
         function tick() {
             count++;
@@ -14,7 +14,7 @@ define(['mout/function/after'], function(after){
 
         it('should the callback after appropriate calls', function(){
 
-            var callback = after(tick, 3);
+            let callback = after(tick, 3);
 
             callback();
             callback();
@@ -25,7 +25,7 @@ define(['mout/function/after'], function(after){
 
         it('should not call closure before', function(){
 
-            var callback = after(tick, 5);
+            let callback = after(tick, 5);
 
             callback();
             callback();
@@ -37,7 +37,7 @@ define(['mout/function/after'], function(after){
 
         it('should continue calling the callback after the minimum amount of calls', function(){
 
-            var callback = after(tick, 3);
+            let callback = after(tick, 3);
 
             callback();
             callback();
