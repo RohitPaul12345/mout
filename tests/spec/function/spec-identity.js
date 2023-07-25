@@ -7,7 +7,7 @@ define(['mout/function/identity'], function(identity){
             expect( identity(3) ).toBe( 3 );
             expect( identity(null) ).toBe( null );
             expect( identity(void(0)) ).toBe( void(0) );
-            var obj = {};
+            let obj = {};
             expect( identity(obj) ).toBe( obj );
         });
 
